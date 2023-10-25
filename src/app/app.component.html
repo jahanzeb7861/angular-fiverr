@@ -1,79 +1,51 @@
 <div class="l-header">
-  <nav class="navbar navbar-expand-xl navbar-light">
-    <div class="container">
-      <a class="navbar-brand fs-3 fw-bold" href="index.html">Web portfolio</a>
-      <button class="navbar-toggler border-0 text-black d-xl-none" data-bs-toggle="collapse"
-        data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i class="fa fa-list-ul"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" (click)="detectComp('home')">Home <span
-                class="visually-hidden">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  (click)="detectComp('messages')">Messages</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" (click)="detectComp('documentation')">Documentation</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" (click)="detectComp('meeting')">Meetings <i class="fa fa-chevron-down small"></i></a>
-            <div class="dropdown-menu" aria-labelledby="dropdownId">
-              <a class="dropdown-item" (click)="detectComp('ab')">AB435EE</a>
-            </div>
-          </li>
-        </ul>
-
-        
-        <ul class="navbar-nav ms-auto mt-4 mt-xl-0">
-          <li class="nav-item">
-            <a class="btn btn-outline-primary btn-custom" href="#" type="button" class="btn btn-primary"
-              data-bs-toggle="modal" data-bs-target="#login-modal">Login</a>
-          </li>
-          
-          <li class="nav-item">
-            <a href="" class="sidebar-toggler btn btn-dark text-light ms-3"><i class="fa fa-question"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
+  <app-menu></app-menu>
 </div>
 
 <div class="modal fade login-modal" id="login-modal" data-bs-keyboard="true" tabindex="-1"
-aria-labelledby="login-modalLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered">
-<div class="modal-content">
-  <!-- <div class="modal-header">
+  aria-labelledby="login-modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
     <h1 class="modal-title fs-5" id="login-modalLabel">Login</h1>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div> -->
-  <div class="modal-body">
-    <h4 class="mb-3">Login</h4>
-    <button type="button" class="btn close-btn text-danger fs-4" data-bs-dismiss="modal" aria-label="Close"><i
-        class="fa fa-times"></i></button>
-    <form method="post" action="" [formGroup]="loginForm" (ngSubmit)="loginUser()">
-      <div class="mb-3">
-        <input type="text" name="" id="" class="form-control" placeholder="Username" aria-describedby="helpId"
-        formControlName="user">
+      <div class="modal-body">
+        <h4 class="mb-3">Login</h4>
+        <button type="button" class="btn close-btn text-danger fs-4" data-bs-dismiss="modal" aria-label="Close"><i
+            class="fa fa-times"></i></button>
+            <form method="post" action="" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+              <div class="mb-3">
+                <input type="text" name="" id="" class="form-control" placeholder="Username" aria-describedby="helpId"
+                  formControlName="user">
+                <div *ngIf="formSubmitted && loginForm.get('user')?.hasError('required')" style="color: red;">
+                  Username is required.
+                </div>
+                <div *ngIf="formSubmitted && loginForm.get('user')?.hasError('pattern')" style="color: red;">
+                  Username must consist of letters and numbers and may contain capital letters.
+                </div>
+              </div>
+              <div class="mb-3">
+                <input type="password" name="" id="" class="form-control" placeholder="Password" aria-describedby="helpId"
+                  formControlName="password">
+                <div *ngIf="formSubmitted && loginForm.get('password')?.hasError('required')" style="color: red;">
+                  Password is required.
+                </div>
+                <div *ngIf="formSubmitted && loginForm.get('password')?.hasError('minlength')" style="color: red;">
+                  Password must contain at least 8 characters.
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary w-100 btn-custom">
+                Connexion
+              </button>
+            </form>
       </div>
-      <div class="mb-3">
-        <input type="password" name="" id="" class="form-control" placeholder="Password"
-          aria-describedby="helpId" formControlName="password">
-      </div>
-      <button type="submit" class="btn btn-primary w-100 btn-custom">Connexion</button>
-    </form>
-  </div>
-  <!-- <div class="modal-footer">
+      <!-- <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
     <button type="button" class="btn btn-primary">Understood</button>
   </div> -->
-</div>
-</div>
+    </div>
+  </div>
 </div>
 
 <ng-container *ngComponentOutlet="comp"></ng-container>

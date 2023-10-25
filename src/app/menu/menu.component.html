@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-xl navbar-light">
+  <div class="container">
+    <a class="navbar-brand fs-3 fw-bold" [routerLink]="['/home']">Web portfolio</a>
+    <button class="navbar-toggler border-0 text-black d-xl-none" data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <i class="fa fa-list-ul"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+        <li class="nav-item" >
+          <a class="nav-link" [class.active]="activeRoute === 'home'" [routerLink]="['/home']">Home <span class="visually-hidden">(current)</span></a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" [class.active]="activeRoute === 'messages'" [routerLink]="['/messages']">Messages</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" [class.active]="activeRoute === 'documentation'" [routerLink]="['/documentation']">Documentation</a>
+        </li>
+        <li class="nav-item dropdown" >
+          <a class="nav-link" [class.active]="activeRoute === 'meeting'" [routerLink]="['/meeting']">Meetings <i class="fa fa-chevron-down small"></i></a>
+          <div class="dropdown-menu" aria-labelledby="dropdownId">
+            <a class="dropdown-item" [routerLink]="['/ab']">AB435EE</a>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mt-4 mt-xl-0">
+        <li class="nav-item">
+          <a class="btn btn-outline-primary btn-custom" href="#" type="button" data-bs-toggle="modal" data-bs-target="#login-modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Login</font></font></a>
+        </li>
+
+        <li class="nav-item">
+          <a href="" class="sidebar-toggler btn btn-dark text-light ms-3"><i class="fa fa-question"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

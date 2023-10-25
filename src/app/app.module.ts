@@ -8,7 +8,10 @@ import { MessagesComponent } from './messages/messages.component';
 import { DocumentationComponent } from './documentation/documentation.component';
 import { MeetingComponent } from './meeting/meeting.component';
 import { AbComponent } from './ab/ab.component';
-import {ReactiveFormsModule} from '@angular/forms'
+import {ReactiveFormsModule} from '@angular/forms';
+import { MenuComponent } from './menu/menu.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import {ReactiveFormsModule} from '@angular/forms'
     MessagesComponent,
     DocumentationComponent,
     MeetingComponent,
-    AbComponent
+    AbComponent,
+    MenuComponent,
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

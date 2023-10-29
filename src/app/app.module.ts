@@ -14,6 +14,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { HelpComponentComponent } from './help-component/help-component.component'
 import { MeetingFormTwoComponent } from './meetingformtwo/meetingformtwo.component';
+import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
+import { SquareComponent } from './square/square.component';
+import { GameService } from './game.service';
 
 @NgModule({
   declarations: [
@@ -27,14 +30,16 @@ import { MeetingFormTwoComponent } from './meetingformtwo/meetingformtwo.compone
     NotFoundComponent,
     LoginComponent,
     HelpComponentComponent,
-    MeetingFormTwoComponent
+    MeetingFormTwoComponent,
+    TicTacToeComponent,
+    SquareComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [GameService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

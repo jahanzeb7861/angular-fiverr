@@ -1,0 +1,52 @@
+<div class="l-body">
+  <div class="container">
+    <div class="box-style box-style-top box-scroll-full">
+      <form [formGroup]="accessEventForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row gy-4">
+          <div class="col-lg-12">
+            <h2 class="mb-4">Access an event</h2>
+            <div class="row gy-4">
+              <div class="col-lg-12">
+                <input formControlName="meetingIdentifier" type="text" class="form-control form-control-lg" placeholder="Meeting Identifier">
+                  <div *ngIf="accessEventForm.get('meetingIdentifier')?.invalid && accessEventForm.get('meetingIdentifier')?.touched">
+                    <small class="text-danger" *ngIf="accessEventForm.get('meetingIdentifier')?.errors?.['required']">Meeting Identifier is required.</small>
+                    <small class="text-danger" *ngIf="accessEventForm.get('meetingIdentifier')?.errors?.['pattern']">Meeting Identifier should be 8 characters or uppercase numbers</small>
+                  </div>
+              </div>
+              <div class="col-lg-12">
+                <input formControlName="firstName" type="text" class="form-control form-control-lg" placeholder="First Name">
+                <div *ngIf="accessEventForm.get('firstName')?.invalid && accessEventForm.get('firstName')?.touched">
+                  <small class="text-danger" *ngIf="accessEventForm.get('firstName')?.errors?.['required']">First Name is required.</small>
+                  <small class="text-danger" *ngIf="accessEventForm.get('firstName')?.errors?.['pattern']">Invalid First Name.</small>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <input formControlName="lastName" type="text" class="form-control form-control-lg" placeholder="Last Name">
+                <div *ngIf="accessEventForm.get('lastName')?.invalid && accessEventForm.get('lastName')?.touched">
+                  <small class="text-danger" *ngIf="accessEventForm.get('lastName')?.errors?.['required']">Last Name is required.</small>
+                  <small class="text-danger" *ngIf="accessEventForm.get('lastName')?.errors?.['pattern']">Invalid Last Name.</small>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <input formControlName="email" type="email" class="form-control form-control-lg" placeholder="Email">
+                <div *ngIf="accessEventForm.get('email')?.invalid && accessEventForm.get('email')?.touched">
+                  <small class="text-danger" *ngIf="accessEventForm.get('email')?.errors?.['required']">Email is required.</small>
+                  <small class="text-danger" *ngIf="accessEventForm.get('email')?.errors?.['email']">Invalid Email format.</small>
+                </div>
+              </div>
+              <div class="col-12 text-end">
+                <button type="submit" class="btn btn-primary btn-custom"  [disabled]="!accessEventForm.valid">Submit</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+     </form>
+    </div>
+  </div>
+</div>
+<div class="l-footer">
+
+</div>
+
+<app-help-component [content]="'This is the content for the Meeting component.'"></app-help-component>

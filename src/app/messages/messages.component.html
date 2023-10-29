@@ -2,32 +2,54 @@
     <div class="container">
       <div class="box-style box-style-top box-scroll-full">
         <h2 class="mb-4">Message</h2>
-        <div class="row gy-4">
-          <div class="col-lg-6">
-            <!-- <label for="" class="form-label">Name</label> -->
-            <input type="text" name="" id="" class="form-control form-control-lg" placeholder="Last name"
-              aria-describedby="helpId">
-          </div>
-          <div class="col-lg-6">
-            <!-- <label for="" class="form-label">Name</label> -->
-            <input type="text" name="" id="" class="form-control form-control-lg" placeholder="First name"
-              aria-describedby="helpId">
-          </div>
-          <div class="col-lg-12">
-            <!-- <label for="" class="form-label">Name</label> -->
-            <input type="email" name="" id="" class="form-control form-control-lg" placeholder="Email"
-              aria-describedby="helpId">
-          </div>
-          <div class="col-lg-12">
-            <!-- <label for="" class="form-label"></label> -->
-            <textarea class="form-control form-control-lg" name="" id="" placeholder="Comments"
-              rows="7"></textarea>
-          </div>
-          <div class="col-12 text-end">
-            <button type="submit" class="btn btn-primary btn-custom">Submit</button>
-          </div>
 
-        </div>
+      <!-- Display form or thank you message based on 'formSubmitted' flag -->
+      <ng-container *ngIf="!formSubmitted; else thankYouMessage">
+        <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="row gy-4">
+            <div class="col-lg-6">
+              <input formControlName="lastName" type="text" class="form-control form-control-lg" placeholder="Last Name">
+              <div *ngIf="messageForm.get('lastName')?.invalid && messageForm.get('lastName')?.touched">
+                <small class="text-danger" *ngIf="messageForm.get('lastName')?.errors?.['required']">Last Name is required.</small>
+                <small class="text-danger" *ngIf="messageForm.get('lastName')?.errors?.['pattern']">Invalid Last Name.</small>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <input formControlName="firstName" type="text" class="form-control form-control-lg" placeholder="First Name">
+              <div *ngIf="messageForm.get('firstName')?.invalid && messageForm.get('firstName')?.touched">
+                <small class="text-danger" *ngIf="messageForm.get('firstName')?.errors?.['required']">First Name is required.</small>
+                <small class="text-danger" *ngIf="messageForm.get('firstName')?.errors?.['pattern']">Invalid First Name.</small>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <input formControlName="email" type="email" class="form-control form-control-lg" placeholder="Email">
+                  <div *ngIf="messageForm.get('email')?.invalid && messageForm.get('email')?.touched">
+                    <small class="text-danger" *ngIf="messageForm.get('email')?.errors?.['required']">Email is required.</small>
+                    <small class="text-danger" *ngIf="messageForm.get('email')?.errors?.['email']">Invalid Email format.</small>
+                  </div>
+            </div>
+            <div class="col-lg-12">
+              <textarea formControlName="comment" class="form-control form-control-lg" placeholder="Comment" rows="7"></textarea>
+              <div *ngIf="messageForm.get('comment')?.invalid && messageForm.get('comment')?.touched">
+                <small class="text-danger" *ngIf="messageForm.get('comment')?.errors?.['required']">Comment is required.</small>
+                <small class="text-danger" *ngIf="messageForm.get('comment')?.errors?.['maxlength']">Comment exceeds 250 characters.</small>
+              </div>
+            </div>
+            <div class="col-12 text-end">
+              <button type="submit" class="btn btn-primary btn-custom" [disabled]="!messageForm.valid">Submit</button>
+            </div>
+          </div>
+          </form>
+        </ng-container>
+
+        <ng-template #thankYouMessage>
+          <div>
+            <h3>Thank you for your message!</h3>
+            <!-- You can add more content to thank the user -->
+          </div>
+        </ng-template>
+
+
       </div>
     </div>
   </div>
@@ -36,43 +58,5 @@
   </div>
 
 
-<div class="right-side h-100">
-<div class="right-side-inner h-100">
-  <div class="r-header sticky-top">
-    <div class="">
-      <h4>Help</h4>
-      <a href="" class="sidebar-toggler btn btn-danger text-light ms-3"><i class="fa fa-times"></i></a>
-    </div>
-  </div>
-  <div class="r-body">
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-  </div>
-  <div class="r-footer"></div>
-</div>
-</div>
+
+<app-help-component [content]="'This is the content for the Messages component.'"></app-help-component>

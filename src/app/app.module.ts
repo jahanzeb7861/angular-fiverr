@@ -11,7 +11,9 @@ import { AbComponent } from './ab/ab.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './login/login.component'
+import { LoginComponent } from './login/login.component';
+import { HelpComponentComponent } from './help-component/help-component.component'
+import { MeetingFormTwoComponent } from './meetingformtwo/meetingformtwo.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { LoginComponent } from './login/login.component'
     AbComponent,
     MenuComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    HelpComponentComponent,
+    MeetingFormTwoComponent
   ],
   imports: [
     BrowserModule,

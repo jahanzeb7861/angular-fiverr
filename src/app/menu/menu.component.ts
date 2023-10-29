@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -11,6 +11,7 @@ import { filter } from 'rxjs/operators';
 export class MenuComponent implements OnInit {
 
   activeRoute: any;
+  @Output() buttonClick = new EventEmitter<string>();
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.activeRoute = this.route.snapshot.firstChild?.routeConfig?.path || '';
@@ -23,6 +24,10 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onButtonClick(value: any) {
+    localStorage.setItem('ishelpHidden',value);
   }
 
 }

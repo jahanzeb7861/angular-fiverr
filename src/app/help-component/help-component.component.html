@@ -1,0 +1,14 @@
+<div *ngIf="showHelp" class="right-side h-100">
+  <div class="right-side-inner h-100">
+    <div class="r-header sticky-top">
+      <div>
+        <h4>Help</h4>
+        <a (click)="closeHelp()" class="sidebar-toggler btn btn-danger text-light ms-3"><i class="fa fa-times"></i></a>
+      </div>
+    </div>
+    <div class="r-body">
+      <p>{{ content }}</p>
+    </div>
+    <div class="r-footer"></div>
+  </div>
+</div>

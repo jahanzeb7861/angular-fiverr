@@ -1,76 +1,68 @@
 <div class="l-body">
     <div class="container">
       <div class="box-style box-style-top box-scroll-full">
-        <div class="row gy-4">
-          <div class="col-lg-8">
-            <h2 class="mb-4">Create an event</h2>
-            <div class="row gy-4">
-              <div class="col-lg-6">
-                <!-- <label for="" class="form-label">Name</label> -->
-                <input type="text" name="" id="" class="form-control form-control-lg" placeholder="Last Name"
-                  aria-describedby="helpId">
+        <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="row gy-4">
+            <div class="col-lg-12">
+              <h2 class="mb-4">Create an event</h2>
+              <div class="row gy-4">
+                <div class="col-lg-6">
+                  <input formControlName="lastName" type="text" class="form-control form-control-lg" placeholder="Last Name">
+                  <div *ngIf="eventForm.get('lastName')?.invalid && eventForm.get('lastName')?.touched">
+                    <small class="text-danger" *ngIf="eventForm.get('lastName')?.errors?.['required']">Last Name is required.</small>
+                    <small class="text-danger" *ngIf="eventForm.get('lastName')?.errors?.['pattern']">Invalid Last Name.</small>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <input formControlName="firstName" type="text" class="form-control form-control-lg" placeholder="First Name">
+                  <div *ngIf="eventForm.get('firstName')?.invalid && eventForm.get('firstName')?.touched">
+                    <small class="text-danger" *ngIf="eventForm.get('firstName')?.errors?.['required']">First Name is required.</small>
+                    <small class="text-danger" *ngIf="eventForm.get('firstName')?.errors?.['pattern']">Invalid First Name.</small>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <input formControlName="email" type="email" class="form-control form-control-lg" placeholder="Email">
+                  <div *ngIf="eventForm.get('email')?.invalid && eventForm.get('email')?.touched">
+                    <small class="text-danger" *ngIf="eventForm.get('email')?.errors?.['required']">Email is required.</small>
+                    <small class="text-danger" *ngIf="eventForm.get('email')?.errors?.['email']">Invalid Email format.</small>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <input formControlName="password" type="password" class="form-control form-control-lg" placeholder="Password">
+                  <div *ngIf="eventForm.get('password')?.invalid && eventForm.get('password')?.touched">
+                    <small class="text-danger" *ngIf="eventForm.get('password')?.errors?.['required']">Password is required.</small>
+                    <small class="text-danger" *ngIf="eventForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters.</small>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <input formControlName="confirmPassword" type="password" class="form-control form-control-lg" placeholder="Confirm password">
+                  <div *ngIf="eventForm.get('confirmPassword')?.invalid && eventForm.get('confirmPassword')?.touched">
+                    <small class="text-danger" *ngIf="eventForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</small>
+                    <small class="text-danger" *ngIf="eventForm.get('confirmPassword')?.errors?.['minlength']">Confirm Password must be at least 8 characters.</small>
+                    <small class="text-danger" *ngIf="eventForm.get('confirmPassword')?.errors?.['mismatch']">Passwords do not match.</small>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <textarea formControlName="description" class="form-control form-control-lg" placeholder="Description" rows="7"></textarea>
+                  <div *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched">
+                    <small class="text-danger" *ngIf="eventForm.get('description')?.errors?.['required']">Description is required.</small>
+                    <small class="text-danger" *ngIf="eventForm.get('description')?.errors?.['maxlength']">Description exceeds 250 characters.</small>
+                  </div>
+                </div>
+                <!-- <div class="col-lg-12">
+                  <input formControlName="meetingIdentifier" type="text" class="form-control form-control-lg" placeholder="Meeting Identifier">
+                  <div *ngIf="eventForm.get('meetingIdentifier')?.invalid && eventForm.get('meetingIdentifier')?.touched">
+                    <small class="text-danger" *ngIf="eventForm.get('meetingIdentifier')?.errors?.['required']">Meeting Identifier is required.</small>
+                    <small class="text-danger" *ngIf="eventForm.get('meetingIdentifier')?.errors?.['pattern']">Invalid Meeting Identifier.</small>
+                  </div>
+                </div> -->
+                <div class="col-12 text-end">
+                  <button type="submit" class="btn btn-primary btn-custom"  [disabled]="!eventForm.valid">Submit</button>
+                </div>
               </div>
-              <div class="col-lg-6">
-                <!-- <label for="" class="form-label">Name</label> -->
-                <input type="text" name="" id="" class="form-control form-control-lg" placeholder="First name"
-                  aria-describedby="helpId">
-              </div>
-              <div class="col-lg-12">
-                <!-- <label for="" class="form-label">Name</label> -->
-                <input type="email" name="" id="" class="form-control form-control-lg" placeholder="Email"
-                  aria-describedby="helpId">
-              </div>
-              <div class="col-lg-6">
-                <!-- <label for="" class="form-label">Name</label> -->
-                <input type="password" name="" id="" class="form-control form-control-lg" placeholder="Password"
-                  aria-describedby="helpId">
-              </div>
-              <div class="col-lg-6">
-                <!-- <label for="" class="form-label">Name</label> -->
-                <input type="password" name="" id="" class="form-control form-control-lg"
-                  placeholder="Confirm password" aria-describedby="helpId">
-              </div>
-              <div class="col-lg-12">
-                <!-- <label for="" class="form-label"></label> -->
-                <textarea class="form-control form-control-lg" name="" id="" placeholder="Description"
-                  rows="7"></textarea>
-              </div>
-              <div class="col-12 text-end">
-                <button type="submit" class="btn btn-primary btn-custom">Submit</button>
-              </div>
-
             </div>
           </div>
-          <div class="col-lg-4">
-            <h2 class="mb-4">Access an event</h2>
-            <div class="row gy-4">
-              <div class="col-lg-12">
-                <!-- <label for="" class="form-label">Name</label> -->
-                <input type="text" name="" id="" class="form-control form-control-lg"
-                  placeholder="Meeting identifier" aria-describedby="helpId">
-              </div>
-              <div class="col-lg-12">
-                <!-- <label for="" class="form-label">Name</label> -->
-                <input type="text" name="" id="" class="form-control form-control-lg" placeholder="First name"
-                  aria-describedby="helpId">
-              </div>
-              <div class="col-lg-12">
-                <!-- <label for="" class="form-label">Name</label> -->
-                <input type="text" name="" id="" class="form-control form-control-lg" placeholder="Last name"
-                  aria-describedby="helpId">
-              </div>
-              <div class="col-lg-12">
-                <!-- <label for="" class="form-label">Name</label> -->
-                <input type="email" name="" id="" class="form-control form-control-lg" placeholder="Email"
-                  aria-describedby="helpId">
-              </div>
-              <div class="col-12 text-end">
-                <button type="submit" class="btn btn-primary btn-custom">Submit</button>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -78,43 +70,4 @@
 
   </div>
 
-<div class="right-side h-100">
-<div class="right-side-inner h-100">
-  <div class="r-header sticky-top">
-    <div class="">
-      <h4>Help</h4>
-      <a href="" class="sidebar-toggler btn btn-danger text-light ms-3"><i class="fa fa-times"></i></a>
-    </div>
-  </div>
-  <div class="r-body">
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit accusamus quos exercitationem
-      aut voluptatibus! Magni culpa natus dignissimos inventore animi accusantium qui delectus suscipit omnis
-      fugit molestiae quisquam, quibusdam quia.</p>
-  </div>
-  <div class="r-footer"></div>
-</div>
-</div>
+<app-help-component [content]="'This is the content for the Meeting component.'"></app-help-component>

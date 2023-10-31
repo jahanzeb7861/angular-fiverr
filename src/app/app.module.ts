@@ -17,6 +17,7 @@ import { MeetingFormTwoComponent } from './meetingformtwo/meetingformtwo.compone
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 import { SquareComponent } from './square/square.component';
 import { GameService } from './game.service';
+import { SharedService } from './shared.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { GameService } from './game.service';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [GameService],
+  providers: [GameService,SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

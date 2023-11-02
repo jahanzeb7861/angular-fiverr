@@ -6,7 +6,6 @@ import { DocumentationComponent } from './documentation/documentation.component'
 import { MeetingComponent } from './meeting/meeting.component';
 import { AbComponent } from './ab/ab.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './login/login.component';
 import { MeetingFormTwoComponent } from './meetingformtwo/meetingformtwo.component';
 
 const routes: Routes = [
@@ -34,10 +33,6 @@ const routes: Routes = [
 {
   component:AbComponent,
   path:"ab"
-},
-{
-  component:LoginComponent,
-  path:"login"
 },
 {
   component:MeetingFormTwoComponent,

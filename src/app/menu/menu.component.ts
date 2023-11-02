@@ -2,7 +2,9 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2 } from '
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { SharedService } from '../shared.service';
-
+import { Overlay } from '@angular/cdk/overlay';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { LoginModalComponent } from '../login-modal/login-modal.component';
 
 @Component({
   selector: 'app-menu',
@@ -18,6 +20,7 @@ export class MenuComponent implements OnInit {
               private route: ActivatedRoute,
               private sharedService: SharedService,
               private renderer: Renderer2,
+              private overlay: Overlay,
               private el: ElementRef) {
     this.activeRoute = this.route.snapshot.firstChild?.routeConfig?.path || '';
 
@@ -52,6 +55,16 @@ export class MenuComponent implements OnInit {
 
 
 
+  }
+
+  openLoginModal() {
+    const overlayRef = this.overlay.create({
+      hasBackdrop: true,
+      positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically()
+    });
+
+    const portal = new ComponentPortal(LoginModalComponent);
+    overlayRef.attach(portal);
   }
 
 }

@@ -11,13 +11,15 @@ import { AbComponent } from './ab/ab.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { MenuComponent } from './menu/menu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LoginComponent } from './login/login.component';
 import { HelpComponentComponent } from './help-component/help-component.component'
 import { MeetingFormTwoComponent } from './meetingformtwo/meetingformtwo.component';
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 import { SquareComponent } from './square/square.component';
 import { GameService } from './game.service';
 import { SharedService } from './shared.service';
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
 
 @NgModule({
   declarations: [
@@ -29,16 +31,18 @@ import { SharedService } from './shared.service';
     AbComponent,
     MenuComponent,
     NotFoundComponent,
-    LoginComponent,
     HelpComponentComponent,
     MeetingFormTwoComponent,
     TicTacToeComponent,
-    SquareComponent
+    SquareComponent,
+    LoginModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OverlayModule,
+    PortalModule,
   ],
   providers: [GameService,SharedService],
   bootstrap: [AppComponent]
